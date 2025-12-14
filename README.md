@@ -2,6 +2,8 @@
 
 The `<iframe>` tag will transmit user data (by making a request on behalf of the user) to the website specified in the `src`-attribute and potentially more websites as they are loaded by the iframed-website. If the user has not accepted this transfer of data you are most likely violating the General Data Protection Regulation (GDPR) or other data privacy laws.
 
+See a demo at https://privacy-friendly-iframe.demo.gillespie.kr
+
 This project provides a near drop-in replacement for the iframe tag as a webcomponent. All that needs to be done is to:
 
 1. Load the JavaScript to register the custom element
