@@ -12,7 +12,9 @@ By default, the user will be asked and informed about the transfer of informatio
 
 ## Download
 
-You can download this software on the [release page](https://github.com/TimothyGillespie/privacy-friendly-iframe/releases). The README will assume the usage of the production output.
+You can download the software as a npm package with `npm install @tgillespie/privacy-friendly-iframe`.
+
+You can also download it on the [release page](https://github.com/TimothyGillespie/privacy-friendly-iframe/releases). The README will assume the usage of the production output of the releases.
 
 ## Example Usage
 
@@ -46,7 +48,7 @@ Then you can simply use the `<pf-iframe>` in your code as though it is normal `<
 
 You will now see a consent screen before any data is transmitted to the iframe target and only a click on "Yes" will resolve that.
 
-![A screenshot of the consent screen. Gray background with white text and a green button stating to consent with below the text.](./images/screenshot-consent-screen.jpg)
+![A screenshot of the consent screen. Gray background with white text and a green button stating to consent with below the text.](https://raw.githubusercontent.com/TimothyGillespie/privacy-friendly-iframe/refs/heads/main/images/screenshot-consent-screen.jpg)
 
 ## Customization
 
@@ -236,4 +238,4 @@ This library is provided under the MIT license. Do note and respect the of inclu
 
 ​
 
-[![Developed by a human, not by AI](./images/Developed-By-a-Human-Not-By-AI-Badge-white.svg)]([https://notbyai.fyi])
+[![Developed by a human, not by AI](https://raw.githubusercontent.com/TimothyGillespie/privacy-friendly-iframe/refs/heads/main/images/Developed-By-a-Human-Not-By-AI-Badge-white.svg)]([https://notbyai.fyi])
