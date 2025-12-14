@@ -1,45 +1,48 @@
 {
-  "name": "@fossalyze/privacy-friendly-iframe",
-  "version": "1.1.0",
-  "description": "Delay rendering an iframe until consent has been provided.",
-  "main": "index.js",
-  "watch": {
-    "prepare-dev": {
-      "patterns": [
-        "src"
-      ],
-      "extensions": "ts,css",
-      "quiet": false,
-      "runOnChangeOnly": false
+    "name": "@tgillespie/privacy-friendly-iframe",
+    "version": "1.1.0",
+    "description": "Delay rendering an iframe until consent has been provided.",
+    "main": "index.js",
+    "watch": {
+        "prepare-dev": {
+            "patterns": [
+                "src"
+            ],
+            "extensions": "ts,css",
+            "quiet": false,
+            "runOnChangeOnly": false
+        }
+    },
+    "scripts": {
+        "dev": "concurrently --kill-others \"npm run dev-server\" \"npm-watch prepare-dev\"",
+        "dev-server": "http-server -c-1 ./test/",
+        "prepare-dev": "rm -rf ./test/pf-iframe && npm run build &&  cp -r ./dist/prod ./test/pf-iframe",
+        "build": "npm run pre-build && npm run dist:lib && npm run dist:prod && npm run copy:non-code",
+        "pre-build": "rm -rf ./build && tsc && cp ./src/*.css ./build",
+        "dist:lib": "rm -rf ./dist/lib && mkdir -p ./dist/lib && cp -r ./build/* ./dist/lib",
+        "dist:prod": "rm -rf ./dist/prod && mkdir -p ./dist/prod && webpack --config ./webpack.config.js && cleancss -o ./dist/prod/pf-iframe.min.css ./build/pf-iframe.css",
+        "copy:non-code": "npm run copy:packagejson && npm run copy:readme && npm run copy:license",
+        "copy:packagejson": "cp ./package.json ./dist/lib/package.json",
+        "copy:readme": "cp ./README.md ./dist/lib/README.md && cp ./README.md ./dist/prod/README.md",
+        "copy:license": "cp ./LICENSE ./dist/lib/LICENSE && cp ./LICENSE ./dist/prod/LICENSE",
+        "cypress:open": "cypress open",
+        "cypress:run": "cypress run"
+    },
+    "author": "Timothy Gillespie",
+    "license": "MIT",
+    "devDependencies": {
+        "clean-css-cli": "^5.6.3",
+        "concurrently": "^8.2.2",
+        "cypress": "^13.6.6",
+        "http-server": "^14.1.1",
+        "npm-watch": "^0.11.0",
+        "terser": "^5.27.2",
+        "ts-loader": "^9.5.1",
+        "typescript": "^5.3.3",
+        "webpack": "^5.103.0",
+        "webpack-cli": "^5.1.4"
+    },
+    "overrides": {
+        "semver": "^7.5.2"
     }
-  },
-  "scripts": {
-    "dev": "concurrently --kill-others \"npm run dev-server\" \"npm-watch prepare-dev\"",
-    "dev-server": "http-server -c-1 ./test/",
-    "prepare-dev": "rm -rf ./test/pf-iframe && npm run build &&  cp -r ./dist/prod ./test/pf-iframe",
-    "build": "npm run pre-build && npm run dist:lib && npm run dist:prod && npm run copy:non-code",
-    "pre-build": "rm -rf ./build && tsc && cp ./src/*.css ./build",
-    "dist:lib": "rm -rf ./dist/lib && mkdir -p ./dist/lib && cp -r ./build/* ./dist/lib",
-    "dist:prod": "rm -rf ./dist/prod && mkdir -p ./dist/prod && webpack --config ./webpack.config.js && cleancss -o ./dist/prod/pf-iframe.min.css ./build/pf-iframe.css",
-    "copy:non-code": "npm run copy:packagejson && npm run copy:readme && npm run copy:license",
-    "copy:packagejson": "cp ./package.json ./dist/lib/package.json",
-    "copy:readme": "cp ./README.md ./dist/lib/README.md && cp ./README.md ./dist/prod/README.md",
-    "copy:license": "cp ./LICENSE ./dist/lib/LICENSE && cp ./LICENSE ./dist/prod/LICENSE",
-    "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
-  },
-  "author": "Timothy Gillespie (FOSSalyze GmbH)",
-  "license": "MIT",
-  "devDependencies": {
-    "clean-css-cli": "^5.6.3",
-    "concurrently": "^8.2.2",
-    "cypress": "^13.6.6",
-    "http-server": "^14.1.1",
-    "npm-watch": "^0.11.0",
-    "terser": "^5.27.2",
-    "ts-loader": "^9.5.1",
-    "typescript": "^5.3.3",
-    "webpack": "^5.103.0",
-    "webpack-cli": "^5.1.4"
-  }
 }
