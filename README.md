@@ -12,7 +12,7 @@ By default, the user will be asked and informed about the transfer of informatio
 
 ## Download
 
-You can download this software on the [release page](https://github.com/FOSSalyze/privacy-friendly-iframe/releases). The README will assume the usage of the production output.
+You can download this software on the [release page](https://github.com/TimothyGillespie/privacy-friendly-iframe/releases). The README will assume the usage of the production output.
 
 ## Example Usage
 
